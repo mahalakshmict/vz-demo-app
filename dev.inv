@@ -1,2 +1,2 @@
 [dev]
-172.18.0.1 ansible_user=vagrant ansible_pass=vagrant
+172.18.0.1 ansible_user=vagrant
