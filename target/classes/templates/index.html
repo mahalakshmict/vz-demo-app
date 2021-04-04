@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/styles/main.css}" />
+    <title>Demo App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bg2">
+            <h2><i class="fas fa-frog"></i></h2>
+            <p><a th:href="${T(com.demo.DemoController).artifactory()}">Artifactory</a></p>
+        </div>
+        <div class="bg2">
+            <h2><i class="fas fa-database"></i></h2>
+            <p><a th:href="${T(com.demo.DemoController).pgadmin()}">PG Admin</a></p>
+        </div>
+        <div class="bg2">
+            <h2><i class="fas fa-database"></i></h2>
+            <p><a th:href="${T(com.demo.DemoController).adminer()}">Adminer</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

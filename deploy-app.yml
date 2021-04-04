@@ -1,0 +1,4 @@
+- hosts: dev
+  tasks:
+    - import_role:
+        name: deploy-app

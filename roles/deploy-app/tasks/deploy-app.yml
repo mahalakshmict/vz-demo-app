@@ -1,0 +1,7 @@
+- name: Start the container
+  docker_container:
+      name: cdaas-demo-app
+      image: "maha1993/cdaas-demo-app:{{DOCKER_TAG}}"
+      state: started
+      published_ports:
+        - 0.0.0.0:8080:8080

@@ -1,1 +1,1 @@
-# vz-demo-app
+# vz-cdaas-demo-app

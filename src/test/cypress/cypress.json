@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "chromeWebSecurity": false,
+  "videosFolder": "cypress/artifacts/videos",
+  "screenshotsFolder": "cypress/artifacts/screenshots",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "cypress/artifacts/reports/time-service.xml",
+    "toConsole": true
+  }
+}

@@ -1,0 +1,5 @@
+   - name: Install pre-requirements
+     import_tasks: software_required.yml
+         
+   - name: Deploy app
+     import_tasks: deploy_app.yml

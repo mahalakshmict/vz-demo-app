@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.0</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.cdaas</groupId>
+    <artifactId>cdaas-demo-app</artifactId>
+    <version>1.0.0</version>
+    <name>cdaas-demo-app</name>
+    <description>Demo project for CDaaS</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>3.5.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <configFolder>${project.basedir}/src/test/gatling</configFolder>
+                    <dataFolder>${project.basedir}/src/test/gatling/data</dataFolder>
+                    <resultsFolder>${project.basedir}/src/test/gatling/results</resultsFolder>
+                    <bodiesFolder>${project.basedir}/src/test/gatling/bodies</bodiesFolder>
+                    <simulationsFolder>${project.basedir}/src/test/gatling/scala</simulationsFolder>
+                    <runDescription>Gatling Test CDaaS Demo App</runDescription>
+                    <noReports>false</noReports>
+                    <!-- <runMultipleSimulations>true</runMultipleSimulations> -->
+                    <!--   <reportsOnly>directoryName</reportsOnly> -->
+                    <!--   <simulationClass>DemoApp</simulationClass> -->
+                    <!--   <jvmArgs> -->
+                    <!--     <jvmArg>-DmyExtraParam=foo</jvmArg> -->
+                    <!--   </jvmArgs> -->
+                    <!-- <fork>true</fork> -->
+                    <!--    <propagateSystemProperties>true</propagateSystemProperties> -->
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.4.0</version>
+            </plugin>
+	    <plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-surefire-plugin</artifactId>
+    		<version>2.22.2</version>
+    		<configuration>
+        		<testFailureIgnore>true</testFailureIgnore>
+    		</configuration>
+	    </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/src/test/gatling/results</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/src/test/cypress/node_modules</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/src/test/cypress/cypress/artifacts</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
